@@ -1,0 +1,35 @@
+kelimeler = ["fatih","murat"]
+import random
+
+
+
+dec ="evet"
+
+num = 0
+ekran =""
+while dec == "evet":
+    print("adam asmaca gaming")
+    print("oyun basliyor!!!!!")
+    kelime = random.choice(kelimeler)
+    print("rastgele kelime secildi.")
+    ekran = len(kelime) * "-"
+    print(ekran)
+    
+    harf = input("harf giriniz: ")
+    while len(harf) > 1:
+        print("lütfen adam gibi harf giriniz!")
+        harf = input("harf giriniz: ")
+    
+    if harf in kelime :
+        num = 0
+        while num+1 <= len(kelime) :
+            if harf == kelime[num] :
+                ekran = ekran.replace(ekran[num],harf)
+                
+            
+            
+            num +=1
+        print(ekran)    
+    else:
+        print("harf yok!")
+        print(ekran)
