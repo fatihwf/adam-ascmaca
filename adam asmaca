@@ -4,32 +4,57 @@ import random
 
 
 dec ="evet"
-
+can = 5
 num = 0
-ekran =""
+ekranlist =[]
+
 while dec == "evet":
-    print("adam asmaca gaming")
+    can = 5
+    num = 0
+    ekranlist.clear()
+
+    print("\nadam asmaca gaming")
     print("oyun basliyor!!!!!")
     kelime = random.choice(kelimeler)
     print("rastgele kelime secildi.")
-    ekran = len(kelime) * "-"
-    print(ekran)
-    
-    harf = input("harf giriniz: ")
-    while len(harf) > 1:
-        print("lütfen adam gibi harf giriniz!")
-        harf = input("harf giriniz: ")
-    
-    if harf in kelime :
-        num = 0
-        while num+1 <= len(kelime) :
-            if harf == kelime[num] :
-                ekran = ekran.replace(ekran[num],harf)
-                
-            
-            
-            num +=1
-        print(ekran)    
-    else:
-        print("harf yok!")
-        print(ekran)
+
+    for i in range(0,len(kelime)):
+        ekranlist.append("_")
+
+    for x in range(0,len(kelime)):
+        print(f"{ekranlist[x]}",end="")     # prints _____
+
+
+    while can > 0:
+        harf = input("\nharf giriniz: ")
+        while len(harf) > 1:
+            print("lütfen adam gibi harf giriniz!")
+            harf = input("harf giriniz: ")
+
+        if harf in kelime :
+            num = 0
+            while num < len(kelime):
+                if harf == kelime[num]:
+                    ekranlist[num] = harf
+                num += 1
+            for x in range(0, len(kelime) ):
+                print(f"{ekranlist[x]}", end="")
+
+            if "_" not in ekranlist:  #bildiği yer
+                print("\ntebrikler bildiniz! ")
+                dec = input("tekrar oynamak ister misiniz? (evet/hayır): ")
+                break
+
+
+
+            print(f"\n{can} can var. canınız gitmedi!")
+
+
+
+
+        else:
+            print("harf yok!")
+            for x in range(0, len(kelime)):
+                print(f"{ekranlist[x]}", end="")
+            can -= 1
+            print(f"\n\n{can} can kaldı!")
