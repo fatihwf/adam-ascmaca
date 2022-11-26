@@ -5,58 +5,67 @@
 
 int main() {
 	
-	char *kelimeler [] = {"murat","fatih","derya","mob"} ;
+	char *kelimeler [] = {"murat","fatih","derya","mob","breh","bruh"} ;
 	int dec = 1 ;
 	char sec;
 	char *kelime ;
-	int can = 5 ;
+	int can = 6;
 	int random ;
 	int num = 0;
-	char *ekranlist[10]  ;
+	char *ekranlist[20]  ;
 	int i = 0 ;
 	int x = 0 ;
 	char harf;
 	int varmi = 0;
 	int bildi = 1 ;
+	int size ;
 	
 	int yanlissecim;
 	int dogru = 0;
+	size = sizeof kelimeler / sizeof kelimeler[0];
 	
 	srand(time(0)) ;
 	while (dec == 1 ){
 		
 		dogru = 0;
-		can = 5 ;
+		can = 6 ;
 		num = 0 ;
-		printf("\n\nadam asmaca gaming!") ;
-		printf("\noyun basliyor!!!") ;
-		random =  rand() % 4 ;				// kelimelerdeki kelime sayısı ile modunu al
+		printf("\n\n\nadam asmaca gaming!") ;
+		printf("\n\noyun basliyor!!!") ;
+		random =  rand() % size ;				// kelimelerdeki kelime sayısı ile modunu al
 		
 		kelime = kelimeler[random] ;
 		char tahmin[strlen(kelime)];
-		printf("\nrastgele kelime secildi.");
+		printf("\n\nrastgele kelime secildi.");
 		x = 0;
-		while(x < strlen(kelime)) {			// ekranlist _____
+		while(x < 2*strlen(kelime)) {			// ekranlist _____
 			ekranlist[x] = '_' ;
 			
-			x += 1 ;
+			x += 2 ;
+		}
+		x = 1;
+		while(x < 2*strlen(kelime)) {			
+			ekranlist[x] = ' ' ;
+			
+			x += 2 ;
 		}
 		
-			
+		printf("\n\ncan: %d",can);	
 		printf("\nkelime: ") ;
 		i = 0;
-		 while(i < strlen(kelime)) {
+		 while(i < 2*strlen(kelime)) {
 		 	
 		 	printf("%c",ekranlist[i]) ;
 		 	i += 1 ;
 		 }
 		 
 		while (can > 0) {
+			
 			yanlissecim = 1;
 			
 			while(yanlissecim == 1) {
 			
-				printf("\nharf girmek icin h , tahmin icin t basiniz: ");
+				printf("\n\nharf girmek icin h , tahmin icin t basiniz: ");
 				scanf(" %c",&sec);
 				
 				switch(sec) {
@@ -69,14 +78,14 @@ int main() {
 							num = 0 ;
 							while (num < strlen(kelime)) {
 								if (harf == kelime[num]) {
-									ekranlist[num] = harf ;
+									ekranlist[2*num] = harf ;
 									varmi = 1 ;		
 								}
 								num += 1;	
 							}
 							if (varmi == 1) {
-								printf("\nharf var\ncaniniz gitmedi.");
-								printf("%d can var", can);
+								printf("\nharf var!\ncaniniz gitmedi.");
+								printf("\n%d can var.", can);
 								
 							}
 							else {
@@ -107,7 +116,7 @@ int main() {
 								if (dogru == 0 ) {
 								
 									can -= 1;
-									printf("yanlis cevap\n%d can kaldı!",can);
+									printf("\nyanlis cevap\n\n%d can kaldi!\n\n",can);
 								}
 							yanlissecim = 0;
 							break;
@@ -131,7 +140,7 @@ int main() {
 			
 			i = 0;
 			printf("\nkelime: ") ;
-			while(i < strlen(kelime)) {
+			while(i < 2*strlen(kelime)) {
 		 	
 		 		printf("%c",ekranlist[i]) ;
 		 		i += 1 ;
@@ -140,7 +149,7 @@ int main() {
 		 
 		 x = 0;
 		 bildi = 1;
-		 while (x < strlen(kelime)) {
+		 while (x < 2*strlen(kelime)) {
 		 	if ('_' == ekranlist[x]) {
 			 
 		 		bildi = 0; }
@@ -156,9 +165,140 @@ int main() {
 		 	
 		 }
 		 
+		 switch(can) {
+		 	
+		 	
+			 case 6:
+			 	printf("\nadam: ");
+		 		printf("\n\n\nadam henüz asilmiyor!");	
+				
+				break;
+		 		
+			 case 5:
+			 	printf("\nadam: ");
+		 		printf("\n\n\n*****************************");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n    ****                     ");
+			 	printf("\n   *    *                    ");
+				printf("\n   *    *                    ");
+				printf("\n    ****                     ");
+		 		printf("\n      *                      ");
+				printf("\n                             ");
+		 		break;
+			 	
+			 
+			 
+			 case 4:
+		 		printf("\nadam: ");
+		 		printf("\n\n\n*****************************");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n    ****                     ");
+			 	printf("\n   *    *                    ");
+				printf("\n   *    *                    ");
+				printf("\n    ****                     ");
+		 		printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      "); 
+		 		break;
+
+		 	case 3: 
+		 		printf("\nadam: ");
+		 		printf("\n\n\n*****************************");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n    ****                     ");
+			 	printf("\n   *    *                    ");
+				printf("\n   *    *                    ");
+				printf("\n    ****                     ");
+		 		printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      ******                 ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      "); 
+				break;
+		 		
+		 	case 2: 
+		 		printf("\nadam: ");
+		 		printf("\n\n\n*****************************");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n    ****                     ");
+			 	printf("\n   *    *                    ");
+				printf("\n   *    *                    ");
+				printf("\n    ****                     ");
+		 		printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n  **********                 ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      "); 
+		 		break;
+		 	case 1: 
+		 		printf("\nadam: ");
+		 		printf("\n\n\n*****************************");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n    ****                     ");
+			 	printf("\n   *    *                    ");
+				printf("\n   *    *                    ");
+				printf("\n    ****                     ");
+		 		printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n  **********                 ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+		 		printf("\n    *                        ");
+		 		printf("\n   *                         ");
+		 		printf("\n  *                          ");
+		 		break;
+		 	case 0:
+		 		printf("\nadam: ");
+		 		printf("\n\n\n*****************************");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n    ****                     ");
+			 	printf("\n   *    *                    ");
+				printf("\n   *    *                    ");
+				printf("\n    ****                     ");
+		 		printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n  **********                 ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+				printf("\n      *                      ");
+		 		printf("\n    *  *                     ");
+		 		printf("\n   *     *                   ");
+		 		printf("\n  *       *                  ");
+		 
+		 		break;
+		 
+		 
+		 
+		 
+		 }
+		 
+	
+		 
+		 
+		 }
+		 if (can = 0) {
+		 	printf("\n\nkaybettin!!!\ndogru cevap: %s",kelime) ;
+		 	printf("tekrar oynamak icin 1 , cikis icin 2 : ");
+		 	scanf("%d",&dec);
 		 }
 		}
 		
 		
 	}
-
