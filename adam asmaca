@@ -1,60 +1,164 @@
-kelimeler = ["fatih","murat"]
-import random
+#include <stdio.h>
+#include<stdlib.h>  
+#include<time.h>
+#include<string.h>
 
+int main() {
+	
+	char *kelimeler [] = {"murat","fatih","derya","mob"} ;
+	int dec = 1 ;
+	char sec;
+	char *kelime ;
+	int can = 5 ;
+	int random ;
+	int num = 0;
+	char *ekranlist[10]  ;
+	int i = 0 ;
+	int x = 0 ;
+	char harf;
+	int varmi = 0;
+	int bildi = 1 ;
+	
+	int yanlissecim;
+	int dogru = 0;
+	
+	srand(time(0)) ;
+	while (dec == 1 ){
+		
+		dogru = 0;
+		can = 5 ;
+		num = 0 ;
+		printf("\n\nadam asmaca gaming!") ;
+		printf("\noyun basliyor!!!") ;
+		random =  rand() % 4 ;				// kelimelerdeki kelime sayısı ile modunu al
+		
+		kelime = kelimeler[random] ;
+		char tahmin[strlen(kelime)];
+		printf("\nrastgele kelime secildi.");
+		x = 0;
+		while(x < strlen(kelime)) {			// ekranlist _____
+			ekranlist[x] = '_' ;
+			
+			x += 1 ;
+		}
+		
+			
+		printf("\nkelime: ") ;
+		i = 0;
+		 while(i < strlen(kelime)) {
+		 	
+		 	printf("%c",ekranlist[i]) ;
+		 	i += 1 ;
+		 }
+		 
+		while (can > 0) {
+			yanlissecim = 1;
+			
+			while(yanlissecim == 1) {
+			
+				printf("\nharf girmek icin h , tahmin icin t basiniz: ");
+				scanf(" %c",&sec);
+				
+				switch(sec) {
+					
+					case 'h':
+							printf("\n\nharf giriniz: ");
+							scanf(" %c",&harf);
+							
+							
+							num = 0 ;
+							while (num < strlen(kelime)) {
+								if (harf == kelime[num]) {
+									ekranlist[num] = harf ;
+									varmi = 1 ;		
+								}
+								num += 1;	
+							}
+							if (varmi == 1) {
+								printf("\nharf var\ncaniniz gitmedi.");
+								printf("%d can var", can);
+								
+							}
+							else {
+								printf("\nharf yok!");
+								can -= 1 ;
+								printf("\n%d can kaldi", can);
+							}
+							yanlissecim = 0;
+							break;
+						
+						
+					
+					case't':
+							printf("tahmin yapiniz: ");
+							scanf("%s",tahmin);
+							printf("%s",tahmin);
+							x = 0;
+							dogru = 1;
+							for (x= 0 ; x<strlen(kelime) ; x++) {
+								if (tahmin[x] != kelime[x])  {
+									dogru = 0;
+									break;
+								}
+								
+							}
+							
+							
+								if (dogru == 0 ) {
+								
+									can -= 1;
+									printf("yanlis cevap\n%d can kaldı!",can);
+								}
+							yanlissecim = 0;
+							break;
+							
+					
+					default:
+							printf("yanlis secim!");
+							yanlissecim = 1 ;
+			}
+			
+		}
+		
+			varmi = 0;
+			
+			if (dogru == 1) {
+				printf("\ndogru cevap! cvp: %s\n\ntekrar oynamak icin 1, cikis icin 2  : ",kelime) ;
+				scanf("%d",&dec);
+				
+				break;
+			}
+			
+			i = 0;
+			printf("\nkelime: ") ;
+			while(i < strlen(kelime)) {
+		 	
+		 		printf("%c",ekranlist[i]) ;
+		 		i += 1 ;
+		 }
+		 i = 0;
+		 
+		 x = 0;
+		 bildi = 1;
+		 while (x < strlen(kelime)) {
+		 	if ('_' == ekranlist[x]) {
+			 
+		 		bildi = 0; }
+		 	x += 1;
+		 		
+			}
+		 
+		 if (bildi == 1) {
+		 	printf("\n\n\ntebrikler bildiniz!!!! cvp: %s",kelime); 
+		 	printf("\ntekrar oynamak icin 1 , cikis icin 2 basiniz: ");
+		 	scanf("%d", &dec);
+		 	break;
+		 	
+		 }
+		 
+		 }
+		}
+		
+		
+	}
 
-
-dec ="evet"
-can = 5
-num = 0
-ekranlist =[]
-
-while dec == "evet":
-    can = 5
-    num = 0
-    ekranlist.clear()
-
-    print("\nadam asmaca gaming")
-    print("oyun basliyor!!!!!")
-    kelime = random.choice(kelimeler)
-    print("rastgele kelime secildi.")
-
-    for i in range(0,len(kelime)):
-        ekranlist.append("_")
-
-    for x in range(0,len(kelime)):
-        print(f"{ekranlist[x]}",end="")     # prints _____
-
-
-    while can > 0:
-        harf = input("\nharf giriniz: ")
-        while len(harf) > 1:
-            print("lütfen adam gibi harf giriniz!")
-            harf = input("harf giriniz: ")
-
-        if harf in kelime :
-            num = 0
-            while num < len(kelime):
-                if harf == kelime[num]:
-                    ekranlist[num] = harf
-                num += 1
-            for x in range(0, len(kelime) ):
-                print(f"{ekranlist[x]}", end="")
-
-            if "_" not in ekranlist:  #bildiği yer
-                print("\ntebrikler bildiniz! ")
-                dec = input("tekrar oynamak ister misiniz? (evet/hayır): ")
-                break
-
-
-
-            print(f"\n{can} can var. canınız gitmedi!")
-
-
-
-
-        else:
-            print("harf yok!")
-            for x in range(0, len(kelime)):
-                print(f"{ekranlist[x]}", end="")
-            can -= 1
-            print(f"\n\n{can} can kaldı!")
